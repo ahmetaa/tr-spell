@@ -1,0 +1,446 @@
+#
+# Experimantal Hunspell affix file for Turkish (tr-TR)
+#
+# Mehmet Akin mdakin@gmail.com
+
+LANG tr_TR
+SET UTF-8
+TRY İiIıŞşÇçĞğÜüÖö-qwertyuopasdfghjklzxcvbnmQWERTYUOPASDFGHJKLZXCVBNM'
+
+# Names, plural suffixes. -ler -lar
+# if last vowel is (eiöü) -lar is appended
+# if last vowel is (aıou) -lar is appended
+# Examples: kedi-ler elma-lar Kurt-lar
+SFX L0 N 6
+SFX L0 0 ler [eiöü]
+SFX L0 0 ler [eiöü][^aeioöuü]
+SFX L0 0 ler [eiöü][^aeioöuü][^aeioöuü]
+SFX L0 0 lar [aıou]
+SFX L0 0 lar [aıou][^aeioöuü]
+SFX L0 0 lar [aıou][^aeioöuü][^aeioöuü]
+
+SFX L1 N 6
+SFX L1 0 lere [eiöü]
+SFX L1 0 lere [eiöü][^aeioöuü]
+SFX L1 0 lere [eiöü][^aeioöuü][^aeioöuü]
+SFX L1 0 lara [aıou]
+SFX L1 0 lara [aıou][^aeioöuü]
+SFX L1 0 lara [aıou][^aeioöuü][^aeioöuü]
+
+SFX L2 N 6
+SFX L2 0 leri [eiöü]
+SFX L2 0 leri [eiöü][^aeioöuü]
+SFX L2 0 leri [eiöü][^aeioöuü][^aeioöuü]
+SFX L2 0 ları [aıou]
+SFX L2 0 ları [aıou][^aeioöuü]
+SFX L2 0 ları [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in -ın
+SFX L3 N 6
+SFX L3 0 lerin [eiöü]
+SFX L3 0 lerin [eiöü][^aeioöuü]
+SFX L3 0 lerin [eiöü][^aeioöuü][^aeioöuü]
+SFX L3 0 ların [aıou]
+SFX L3 0 ların [aıou][^aeioöuü]
+SFX L3 0 ların [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in-i -ın-ı
+SFX L4 N 6
+SFX L4 0 lerini [eiöü]
+SFX L4 0 lerini [eiöü][^aeioöuü]
+SFX L4 0 lerini [eiöü][^aeioöuü][^aeioöuü]
+SFX L4 0 larını [aıou]
+SFX L4 0 larını [aıou][^aeioöuü]
+SFX L4 0 larını [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in-e -ın-a
+SFX L5 N 6
+SFX L5 0 lerine [eiöü]
+SFX L5 0 lerine [eiöü][^aeioöuü]
+SFX L5 0 lerine [eiöü][^aeioöuü][^aeioöuü]
+SFX L5 0 larına [aıou]
+SFX L5 0 larına [aıou][^aeioöuü]
+SFX L5 0 larına [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -i-nin -ı-nın
+SFX L6 N 6
+SFX L6 0 lerinin [eiöü]
+SFX L6 0 lerinin [eiöü][^aeioöuü]
+SFX L6 0 lerinin [eiöü][^aeioöuü][^aeioöuü]
+SFX L6 0 larının [aıou]
+SFX L6 0 larının [aıou][^aeioöuü]
+SFX L6 0 larının [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in-de -ın-da
+SFX L7 N 6
+SFX L7 0 lerinde [eiöü]
+SFX L7 0 lerinde [eiöü][^aeioöuü]
+SFX L7 0 lerinde [eiöü][^aeioöuü][^aeioöuü]
+SFX L7 0 larında [aıou]
+SFX L7 0 larında [aıou][^aeioöuü]
+SFX L7 0 larında [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in-den -ın-dan
+SFX L8 N 6
+SFX L8 0 lerinden [eiöü]
+SFX L8 0 lerinden [eiöü][^aeioöuü]
+SFX L8 0 lerinden [eiöü][^aeioöuü][^aeioöuü]
+SFX L8 0 larından [aıou]
+SFX L8 0 larından [aıou][^aeioöuü]
+SFX L8 0 larından [aıou][^aeioöuü][^aeioöuü]
+
+# Combined with -in-yle -ı-yla
+SFX L9 N 6
+SFX L9 0 leriyle [eiöü]
+SFX L9 0 leriyle [eiöü][^aeioöuü]
+SFX L9 0 leriyle [eiöü][^aeioöuü][^aeioöuü]
+SFX L9 0 larıyla [aıou]
+SFX L9 0 larıyla [aıou][^aeioöuü]
+SFX L9 0 larıyla [aıou][^aeioöuü][^aeioöuü]
+
+# Names, direction -e -a 
+# if last vowel is (eiöü) -e is appended sepet-e
+# if last vowel is (aıou) -a is appended salon-a
+# if last vowel is the last letter of word, and extra y appended  elma-ya
+# if word has more than 1 sounds, last consonant is (pçtk) and comes after a vowel,
+#    it transforms into (bcdğ) dolap-a -> dolab-a.
+SFX E1 N 6
+SFX E1 0 ye [eiöü]
+SFX E1 0 e [eiöü][bcdfgğhjlmnrsşvyz]
+SFX E1 0 e [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX E1 0 ya [aıou]
+SFX E1 0 a [aıou][bcdfgğhjlmnrsşvyz]
+SFX E1 0 a [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX E2 N 8
+SFX E2 p ba [aıou]p
+SFX E2 ç ca [aıou]ç
+SFX E2 t da [aıou]t
+SFX E2 k ğa [aıou]k
+SFX E2 p be [eiöü]p
+SFX E2 ç ce [eiöü]ç
+SFX E2 t de [eiöü]t
+SFX E2 k ğe [eiöü]k
+
+# Names, direction -i -ı 
+# if last vowel is (eiöü) -e is appended sepet-e
+# if last vowel is (aıou) -a is appended salon-a
+# if last vowel is the last letter of word, and extra y appended  elma-ya
+# if word has more than 1 sounds, last consonant is (pçtk) and comes after a vowel,
+#    it transforms into (bcdğ) dolap-a -> dolab-a.
+SFX I1 N 6
+SFX I1 0 yi [eiöü]
+SFX I1 0 i [eiöü][bcdfgğhjlmnrsşvyz]
+SFX I1 0 i [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX I1 0 yı [aıou]
+SFX I1 0 ı [aıou][bcdfgğhjlmnrsşvyz]
+SFX I1 0 ı [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX I2 N 6
+SFX I2 0 yine [eiöü]
+SFX I2 0 ine [eiöü][bcdfgğhjlmnrsşvyz]
+SFX I2 0 ine [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX I2 0 yına [aıou]
+SFX I2 0 ına [aıou][bcdfgğhjlmnrsşvyz]
+SFX I2 0 ına [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX I3 N 6
+SFX I3 0 yini [eiöü]
+SFX I3 0 ini [eiöü][bcdfgğhjlmnrsşvyz]
+SFX I3 0 ini [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX I3 0 yını [aıou]
+SFX I3 0 ını [aıou][bcdfgğhjlmnrsşvyz]
+SFX I3 0 ını [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX I4 N 6
+SFX I4 0 yinde [eiöü]
+SFX I4 0 inde [eiöü][bcdfgğhjlmnrsşvyz]
+SFX I4 0 inde [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX I4 0 yında [aıou]
+SFX I4 0 ında [aıou][bcdfgğhjlmnrsşvyz]
+SFX I4 0 ında [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX I5 N 6
+SFX I5 0 yinden [eiöü]
+SFX I5 0 inden [eiöü][bcdfgğhjlmnrsşvyz]
+SFX I5 0 inden [eiöü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX I5 0 yından [aıou]
+SFX I5 0 ından [aıou][bcdfgğhjlmnrsşvyz]
+SFX I5 0 ından [aıou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX I9 N 8
+SFX I9 p bı [aıou]p
+SFX I9 ç cı [aıou]ç
+SFX I9 t dı [aıou]t
+SFX I9 k ğı [aıou]k
+SFX I9 p bi [eiöü]p
+SFX I9 ç ci [eiöü]ç
+SFX I9 t di [eiöü]t
+SFX I9 k ği [eiöü]k
+
+
+# Name, possesive 1st -m -im -ım -um -üm 
+# if last letter is a vowel -n is appended
+# if last letter is a consonant then;
+#  if last vowel is (ei) -in is appended sepet-im
+#  if last vowel is (öü) -in is appended öküz-üm
+#  if last vowel is (aı) -ın is appended kalas-ım
+#  if last vowel is (ou) -un is appended salon-um
+#  if word has more than 1 sounds, last consonant is (pçtk) and comes after a vowel,
+#    it transforms into (bcdğ) dolap-ım -> dolab-ım.
+SFX B1 N 9
+SFX B1 0 m [aeioöuü]
+SFX B1 0 im [ei][bcdfgğhjlmnrsşvyz]
+SFX B1 0 im [ei][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX B1 0 üm [öü][bcdfgğhjlmnrsşvyz]
+SFX B1 0 üm [öü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX B1 0 ım [aı][bcdfgğhjlmnrsşvyz]
+SFX B1 0 ım [aı][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX B1 0 um [ou][bcdfgğhjlmnrsşvyz]
+SFX B1 0 um [ou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX B2 N 16
+SFX B2 p bım [aı]p
+SFX B2 p bum [ou]p
+SFX B2 p bim [ei]p
+SFX B2 p büm [öü]p
+SFX B2 ç cım [aı]ç
+SFX B2 ç cum [ou]ç
+SFX B2 ç cim [ei]ç
+SFX B2 ç cüm [öü]ç
+SFX B2 t dım [aı]t
+SFX B2 t dum [ou]t
+SFX B2 t dim [ei]t
+SFX B2 t düm [öü]t
+SFX B2 k ğım [aı]k
+SFX B2 k ğum [ou]k
+SFX B2 k ğim [ei]k
+SFX B2 k ğüm [öü]k
+
+# Name, -n -in -ın -un -ün 
+# if last letter is a vowel -n is appended
+# if last letter is a consonant then;
+#  if last vowel is (ei) -in is appended sepet-in
+#  if last vowel is (öü) -in is appended öküz-ün
+#  if last vowel is (aı) -ın is appended kalas-ın
+#  if last vowel is (ou) -un is appended salon-un
+#  if word has more than 1 sounds, last consonant is (pçtk) and comes after a vowel,
+#    it transforms into (bcdğ) dolap-ın -> dolab-ın.
+SFX S1 N 9
+SFX S1 0 n [aeioöuü]
+SFX S1 0 in [ei][bcdfgğhjlmnrsşvyz]
+SFX S1 0 in [ei][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX S1 0 ün [öü][bcdfgğhjlmnrsşvyz]
+SFX S1 0 ün [öü][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX S1 0 ın [aı][bcdfgğhjlmnrsşvyz]
+SFX S1 0 ın [aı][^aeioöuü][bcdfgğhjlmnrsşvyz]
+SFX S1 0 un [ou][bcdfgğhjlmnrsşvyz]
+SFX S1 0 un [ou][^aeioöuü][bcdfgğhjlmnrsşvyz]
+
+SFX S2 N 16
+SFX S2 p bın [aı]p
+SFX S2 p bun [ou]p
+SFX S2 p bin [ei]p
+SFX S2 p bün [öü]p
+SFX S2 ç cın [aı]ç
+SFX S2 ç cun [ou]ç
+SFX S2 ç cin [ei]ç
+SFX S2 ç cün [öü]ç
+SFX S2 t dın [aı]t
+SFX S2 t dun [ou]t
+SFX S2 t din [ei]t
+SFX S2 t dün [öü]t
+SFX S2 k ğın [aı]k
+SFX S2 k ğun [ou]k
+SFX S2 k ğin [ei]k
+SFX S2 k ğün [öü]k
+
+# Names, small.  -cık -cik -cuk -cük
+# if last vowel is (ei) -cik is appended kedi-cik
+# if last vowel is (öü) -cük is appended öküz-cük
+# if last vowel is (aı) -cık is appended kalem-cik
+# if last vowel is (ou) -cuk is appended salon-cuk
+# if last consonant is (çfhksştp) c in the suffix transforms into ç kitap-çık kafes-çik
+SFX C1 N 12
+SFX C1 0 cik [ei]
+SFX C1 0 cik [ei][bcdgğjlmnrvyz]
+SFX C1 0 cik [ei][^aeioöuü][bcdgğjlmnrvyz]
+SFX C1 0 cük [öü]
+SFX C1 0 cük [öü][bcdgğjlmnrvyz]
+SFX C1 0 cük [öü][^aeioöuü][bcdgğjlmnrvyz]
+SFX C1 0 cık [aı]
+SFX C1 0 cık [aı][bcdgğjlmnrvyz]
+SFX C1 0 cık [aı][^aeioöuü][bcdgğjlmnrvyz]
+SFX C1 0 cuk [ou]
+SFX C1 0 cuk [ou][bcdgğjlmnrvyz]
+SFX C1 0 cuk [ou][^aeioöuü][bcdgğjlmnrvyz]
+SFX C1 N 8
+SFX C2 0 çik [ei][çfhksştp]
+SFX C2 0 çik [ei][^aeioöuü][çfhksştp]
+SFX C2 0 çük [öü][çfhksştp]
+SFX C2 0 çük [öü][^aeioöuü][çfhksştp]
+SFX C2 0 çık [aı][çfhksştp]
+SFX C2 0 çık [aı][^aeioöuü][çfhksştp]
+SFX C2 0 çuk [ou][çfhksştp]
+SFX C2 0 çuk [ou][^aeioöuü][çfhksştp]
+
+
+#--------------------------------
+# VERBS
+#--------------------------------
+
+# Verbs past tense (1) -di -dı -du -dü
+# if words last consonant is (çfhksştp), it becomes -ti -tı -tu -tü
+SFX F1 N 12
+SFX F1 0 di [ei]
+SFX F1 0 di [ei][bcdgğjlmnrvyz]
+SFX F1 0 di [ei][^aeioöuü][bcdgğjlmnrvyz]
+SFX F1 0 dü [öü]
+SFX F1 0 dü [öü][bcdgğjlmnrvyz]
+SFX F1 0 dü [öü][^aeioöuü][bcdgğjlmnrvyz]
+SFX F1 0 dü [aı]
+SFX F1 0 dü [aı][bcdgğjlmnrvyz]
+SFX F1 0 dü [aı][^aeioöuü][bcdgğjlmnrvyz]
+SFX F1 0 du [ou]
+SFX F1 0 du [ou][bcdgğjlmnrvyz]
+SFX F1 0 du [ou][^aeioöuü][bcdgğjlmnrvyz]
+# to be added: dım dın tım tın 
+
+# sertler
+SFX F2 N 8
+SFX F2 0 ti [ei][çfhksştp]
+SFX F2 0 ti [ei][^aeioöuü][çfhksştp]
+SFX F2 0 tü [öü][çfhksştp]
+SFX F2 0 tü [öü][^aeioöuü][çfhksştp]
+SFX F2 0 tı [aı][çfhksştp]
+SFX F2 0 tı [aı][^aeioöuü][çfhksştp]
+SFX F2 0 tu [ou][çfhksştp]
+SFX F2 0 tu [ou][^aeioöuü][çfhksştp]
+
+# Verbs past tense (2) -miş -mış -muş -müş
+SFX F3 N 12
+SFX F3 0 miş [ei]
+SFX F3 0 miş [ei][^aeioöuü]
+SFX F3 0 miş [ei][^aeioöuü][^aeioöuü]
+SFX F3 0 müş [öü]
+SFX F3 0 müş [öü][^aeioöuü]
+SFX F3 0 müş [öü][^aeioöuü][^aeioöuü]
+SFX F3 0 mış [aı]
+SFX F3 0 mış [aı][^aeioöuü]
+SFX F3 0 mış [aı][^aeioöuü][^aeioöuü]
+SFX F3 0 muş [ou]
+SFX F3 0 muş [ou][^aeioöuü]
+SFX F3 0 muş [ou][^aeioöuü][^aeioöuü]
+
+# Verbs normal form (2) -mek -mak
+SFX F4 N 6
+SFX F4 0 mek [eiöü]
+SFX F4 0 mek [eiöü][^aeioöuü]
+SFX F4 0 mek [eiöü][^aeioöuü][^aeioöuü]
+SFX F4 0 mak [aıou]
+SFX F4 0 mak [aıou][^aeioöuü]
+SFX F4 0 mak [aıou][^aeioöuü][^aeioöuü]
+
+# Verbs negative form (2) -me -ma
+SFX F5 N 6
+SFX F5 0 me [eiöü]
+SFX F5 0 me [eiöü][^aeioöuü]
+SFX F5 0 me [eiöü][^aeioöuü][^aeioöuü]
+SFX F5 0 ma [aıou]
+SFX F5 0 ma [aıou][^aeioöuü]
+SFX F5 0 ma [aıou][^aeioöuü][^aeioöuü]
+
+# Verbs ettirgen(1) -dir -dır -dur -dür
+# if words last consonant is (çfhksştp), it becomes -tir -tır -tur -tür
+SFX F6 N 12
+SFX F6 0 dir [ei]
+SFX F6 0 dir [ei][bcdgğjlmnrvyz]
+SFX F6 0 dir [ei][^aeioöuü][bcdgğjlmnrvyz]
+SFX F6 0 dür [öü]
+SFX F6 0 dür [öü][bcdgğjlmnrvyz]
+SFX F6 0 dür [öü][^aeioöuü][bcdgğjlmnrvyz]
+SFX F6 0 dür [aı]
+SFX F6 0 dür [aı][bcdgğjlmnrvyz]
+SFX F6 0 dür [aı][^aeioöuü][bcdgğjlmnrvyz]
+SFX F6 0 dur [ou]
+SFX F6 0 dur [ou][bcdgğjlmnrvyz]
+SFX F6 0 dur [ou][^aeioöuü][bcdgğjlmnrvyz]
+# sertler
+SFX F8 N 8
+SFX F7 0 tir [ei][çfhksştp]
+SFX F7 0 tir [ei][^aeioöuü][çfhksştp]
+SFX F7 0 tür [öü][çfhksştp]
+SFX F7 0 tür [öü][^aeioöuü][çfhksştp]
+SFX F7 0 tır [aı][çfhksştp]
+SFX F7 0 tır [aı][^aeioöuü][çfhksştp]
+SFX F7 0 tur [ou][çfhksştp]
+SFX F7 0 tur [ou][^aeioöuü][çfhksştp]
+
+# Verbs emir+2nd -n, -ın, -in, -un, -ün
+SFX F8 N 9
+SFX F8 0 n [aeiıoöuü]
+SFX F8 0 in [ei][^aeioöuü]
+SFX F8 0 in [ei][^aeioöuü][^aeioöuü]
+SFX F8 0 ün [öü][^aeioöuü]
+SFX F8 0 ün [öü][^aeioöuü][^aeioöuü]
+SFX F8 0 ın [aı][^aeioöuü]
+SFX F8 0 ın [aı][^aeioöuü][^aeioöuü]
+SFX F8 0 un [ou][^aeioöuü]
+SFX F8 0 un [ou][^aeioöuü][^aeioöuü]
+
+# Verbs continuous -iyor, -ıyor, -uyor, -üyor
+# if ends with a vowel also add a -l
+SFX F9 N 12
+SFX F9 0 liyor [ei]
+SFX F9 0 iyor [ei][^aeioöuü]
+SFX F9 0 iyor [ei][^aeioöuü][^aeioöuü]
+SFX F9 0 lüyor [öü]
+SFX F9 0 üyor [öü][^aeioöuü]
+SFX F9 0 üyor [öü][^aeioöuü][^aeioöuü]
+SFX F9 0 lıyor [aı]
+SFX F9 0 ıyor [aı][^aeioöuü]
+SFX F9 0 ıyor [aı][^aeioöuü][^aeioöuü]
+SFX F9 0 luyor [ou]
+SFX F9 0 uyor [ou][^aeioöuü]
+SFX F9 0 uyor [ou][^aeioöuü][^aeioöuü]
+
+# Verbs continuous -ecek, -acak
+# if ends with a vowel also add a -y
+SFX F10 N 6
+SFX F10 0 yecek [eiöü]
+SFX F10 0 ecek [eiöü][^aeioöuü]
+SFX F10 0 ecek [eiöü][^aeioöuü][^aeioöuü]
+SFX F10 0 yacak [aıou]
+SFX F10 0 acak [aıou][^aeioöuü]
+SFX F10 0 acak [aıou][^aeioöuü][^aeioöuü]
+
+
+
+#------------------------------
+#   Numbers
+#------------------------------
+
+# Numbers. th  -ıncı -inci -uncu -üncü
+# kırkıncı ellinci
+SFX X1 N 10
+SFX X1 0 nci [i]
+SFX X1 0 ncı [ı]
+SFX X1 0 inci [ei][^aeioöuü]
+SFX X1 0 inci [ei][^aeioöuü][^aeioöuü]
+SFX X1 0 üncü [öü][^aeioöuü]
+SFX X1 0 üncü [öü][^aeioöuü][^aeioöuü]
+SFX X1 0 ıncı [aı][^aeioöuü]
+SFX X1 0 ıncı [aı][^aeioöuü][^aeioöuü]
+SFX X1 0 uncu [ou][^aeioöuü]
+SFX X1 0 uncu [ou][^aeioöuü][^aeioöuü]
+
+# Numbers. to  -e -a -ye -ya
+# ikiye dokuza
+SFX X2 N 6
+SFX X2 0 ye [eiöü]
+SFX X2 0 ya [aıou]
+SFX X2 0 e [eiöü][^aeioöuü]
+SFX X2 0 e [eiöü][^aeioöuü][^aeioöuü]
+SFX X2 0 a [aıou][^aeioöuü]
+SFX X2 0 a [aıou][^aeioöuü][^aeioöuü]
+
