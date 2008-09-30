@@ -95,6 +95,7 @@ public class CountingSet<T> implements Iterable<T> {
 
     /**
      * current count of the given element
+     *
      * @param t element
      * @return count of the element. if element does not exist, 0
      */
@@ -106,6 +107,7 @@ public class CountingSet<T> implements Iterable<T> {
 
     /**
      * if element exist.
+     *
      * @param t element.
      * @return if element exists.
      */
@@ -116,6 +118,7 @@ public class CountingSet<T> implements Iterable<T> {
     /**
      * returns a Pair<T> list containing elemetns and it's counts.
      * sorted with the count of the elements descending.
+     *
      * @return a Pair<T> list, sorted by count, descending
      */
     public List<Pair<T>> getSortedPairList() {
@@ -127,8 +130,15 @@ public class CountingSet<T> implements Iterable<T> {
         return l;
     }
 
+    public List<T> getFirst(int count) {
+        if (count > this.size())
+            count = this.size();
+        return getSortedList().subList(0, count);
+    }
+
     /**
      * returns the Elements in a list sorted by count, descending..
+     *
      * @return Elements in a list sorted by count, descending..
      */
     public List<T> getSortedList() {
@@ -142,6 +152,7 @@ public class CountingSet<T> implements Iterable<T> {
 
     /**
      * returns the Elements in a list sorted by the given comparator..
+     *
      * @param comp a Comarator of T
      * @return Elements in a list sorted by the given comparator..
      */
@@ -153,6 +164,7 @@ public class CountingSet<T> implements Iterable<T> {
 
     /**
      * returns elements in a set.
+     *
      * @return a set containing the elements.
      */
     public Set<T> getSet() {
@@ -161,6 +173,7 @@ public class CountingSet<T> implements Iterable<T> {
 
     /**
      * returns an iterator for elements.
+     *
      * @return returns an iterator for elements.
      */
     public Iterator<T> iterator() {
