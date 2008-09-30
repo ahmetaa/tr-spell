@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class KelimeListesi implements KelimeDenetleyici {
+public class KelimeListesi {
 
     private static Pattern p = Pattern.compile("[^ \\t\\n,.]+");
 
@@ -38,23 +38,7 @@ public class KelimeListesi implements KelimeDenetleyici {
     }
 
     private void oku(String file) throws IOException {
-        IterableLineReader ilr = new SimpleFileReader
-                .Builder(file)
-                .encoding("utf-8")
-                .filters(StringFilters.PASS_ONLY_TEXT)
-                .trim()
-                .build()
-                .getIterableReader();
-        for (String line : ilr) {
-            String[] strs = line.split("[|]");
-            if (strs.length == 0)
-                continue;
-            if (strs.length == 1)
-                kelimeFrekansKumesi.insert(strs[0], 1);
-            if (strs.length == 2)
-                kelimeFrekansKumesi.insert(strs[0], Integer.parseInt(strs[1]));
-        }
-        ilr.close();
+        kelimeFrekansKumesi = new StringFrequencyHelper(file).getPairSet();
     }
 
     public List<String> getAsList() {
@@ -165,11 +149,6 @@ public class KelimeListesi implements KelimeDenetleyici {
         sfw.close();
     }
 
-    @Override
-    public boolean denetle(String s) {
-        return kelimeFrekansKumesi.contains(s) || kelimeFrekansKumesi.contains(Words.uncapitalize(s));
-    }
-
     private class TurkceSiralamaKiyaslayici implements Comparator<String> {
         public int compare(String o1, String o2) {
             Collator turkishCollator = Collator.getInstance(new Locale("tr"));
@@ -188,7 +167,7 @@ public class KelimeListesi implements KelimeDenetleyici {
     }
 
     public static void main(String[] args) throws IOException {
-        new KelimeListesi("liste/kelime-frekans.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/utf-8");
-        //new KelimeListesi("liste/kelime-frekans.txt").generateFrequencyOrderedWordFile("liste/frekans-sirali-liste.txt");
+        //new KelimeListesi("liste/kelime-frekans.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/utf-8");
+        new KelimeListesi("liste/kelime-frekans.txt").generateFrequencyOrderedWordFile("liste/frekans-sirali-liste.txt");
     }
 }

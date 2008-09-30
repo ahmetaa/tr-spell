@@ -2,12 +2,10 @@ package trspell.corpus;
 
 import net.zemberek.erisim.Zemberek;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
-
-import java.util.List;
-import java.util.Set;
-import java.io.IOException;
-
 import org.jmate.SimpleFileWriter;
+
+import java.io.IOException;
+import java.util.List;
 
 public class AffixBlockCounter {
 
@@ -26,8 +24,7 @@ public class AffixBlockCounter {
         System.out.println("suffix listesi olusturuluyor..");
         for (String s : kelimeler) {
             List<String[]> sonuclar = zemberek.kelimeAyristir(s);
-            if (sonuclar.size() > 0) {
-                String[] sonuc = sonuclar.get(0);
+            for (String[] sonuc : sonuclar) {
                 if (sonuc.length > 1) {
                     StringBuilder sb = new StringBuilder();
                     for (int i = 1; i < sonuc.length; i++) {
@@ -52,7 +49,7 @@ public class AffixBlockCounter {
     }
 
     public static void main(String[] args) throws IOException {
-        new AffixBlockCounter("liste/kelime-frekans.txt").createSuffixCountFile("liste/suffix.txt");
+        new AffixBlockCounter("liste/test-kelimeler.txt").createSuffixCountFile("liste/test-suffix.txt");
     }
 
 
