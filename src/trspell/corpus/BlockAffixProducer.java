@@ -21,11 +21,14 @@ public class BlockAffixProducer {
     Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
 
     public BlockAffixProducer(String kelimeDosyasi, String affixFile, int affixLimit) throws IOException {
+        System.out.println("Loading suffixes.");
         suffixes = Collects.newHashSet(new StringFrequencyHelper(affixFile, affixLimit).getPairSet().getSortedList());
         for (String suffix : suffixes) {
             suffixIdMap.put(suffix, String.valueOf(suffixSequence++));
         }
 
+        System.out.println("Processing words.");
+        int j = 0;
         for (String kelime : new SimpleFileReader(kelimeDosyasi, "utf-8").getIterableReader()) {
             List<String[]> sonuclar = zemberek.kelimeAyristir(kelime);
 
@@ -33,6 +36,10 @@ public class BlockAffixProducer {
                 addRootSuffixMap(kelime, "");
             }
 
+            if (j++ % 1000 == 0)
+                System.out.print(".");
+            if (j % 50000 == 0)
+                System.out.println(j);
             for (String[] sonuc : sonuclar) {
                 if (sonuc.length > 1) {
                     StringBuilder sb = new StringBuilder();
@@ -41,6 +48,11 @@ public class BlockAffixProducer {
                     }
                     String ekBlogu = sb.toString();
                     String kokAdayi = kelime.substring(0, kelime.length() - ekBlogu.length());
+
+                    if (!suffixes.contains(ekBlogu)) {
+                        addRootSuffixMap(kelime, "");
+                        continue;
+                    }
 
                     if (zemberek.kelimeDenetle(kokAdayi)) {
                         if (suffixes.contains(ekBlogu)) {
@@ -76,6 +88,7 @@ public class BlockAffixProducer {
 
 
     private void generateAffixFile(String fileName) throws IOException {
+        System.out.println("Generating affix file...");
         List<String> templateLines = new SimpleFileReader("kaynaklar/hunspell/affix-template.txt", "utf-8").asStringList();
         SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
         sfw.writeLines(templateLines);
@@ -112,6 +125,7 @@ public class BlockAffixProducer {
     }
 
     private void generateHunspellDictFile(String fileName) throws IOException {
+        System.out.println("Generating dictionary file...");
         SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
         sfw.writeLine(String.valueOf(rootSuffixMap.size()));
         for (Map.Entry<String, String> entry : rootSuffixMap.entrySet()) {
@@ -126,10 +140,10 @@ public class BlockAffixProducer {
 
     public static void main(String[] args) throws IOException {
         BlockAffixProducer bap = new BlockAffixProducer(
-                "liste/test-kelimeler.txt",
-                "liste/test-suffix.txt",
-                10000);
-        bap.generateDictSuffixNameFile("liste/test-dic.txt");
+                "liste/frekans-sirali-liste.txt",
+                "liste/suffix.txt",
+                7500);
+        //bap.generateDictSuffixNameFile("liste/test-dic.txt");
         bap.generateHunspellDictFile("kaynaklar/hunspell-win32/test-tr.dic");
         bap.generateAffixFile("kaynaklar/hunspell-win32/test-tr.aff");
     }
