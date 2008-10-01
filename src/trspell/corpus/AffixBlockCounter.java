@@ -14,7 +14,7 @@ public class AffixBlockCounter {
 
     public AffixBlockCounter(String listeDosyasi) {
         System.out.println("liste okunuyor");
-        KelimeListesi liste = new KelimeListesi(listeDosyasi);
+        WordListGenerator liste = new WordListGenerator(listeDosyasi);
         kelimeler = liste.getAsList();
     }
 

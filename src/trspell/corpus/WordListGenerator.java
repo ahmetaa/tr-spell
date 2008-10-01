@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class KelimeListesi {
+public class WordListGenerator {
 
     private static Pattern p = Pattern.compile("[^ \\t\\n,.]+");
 
@@ -25,7 +25,7 @@ public class KelimeListesi {
     private String listFile;
     private int toplamKelime = 0;
 
-    public KelimeListesi(String listFile) {
+    public WordListGenerator(String listFile) {
         this.listFile = listFile;
         if (new File(listFile).exists()) {
             try {
@@ -113,7 +113,7 @@ public class KelimeListesi {
     }
 
     public void mergeList(String listFile) throws IOException {
-        KelimeListesi bc = new KelimeListesi(listFile);
+        WordListGenerator bc = new WordListGenerator(listFile);
         for (String s : bc.kelimeFrekansKumesi) {
             kelimeFrekansKumesi.merge(s, bc.kelimeFrekansKumesi.getCount(s));
         }
@@ -167,7 +167,7 @@ public class KelimeListesi {
     }
 
     public static void main(String[] args) throws IOException {
-        //new KelimeListesi("liste/kelime-frekans.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/utf-8");
-        new KelimeListesi("liste/kelime-frekans.txt").generateFrequencyOrderedWordFile("liste/frekans-sirali-liste.txt");
+        //new WordListGenerator("liste/kelime-frekans.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/utf-8");
+        new WordListGenerator("liste/kelime-frekans.txt").generateFrequencyOrderedWordFile("liste/frekans-sirali-liste.txt");
     }
 }
