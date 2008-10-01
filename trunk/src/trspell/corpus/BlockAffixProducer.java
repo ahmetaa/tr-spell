@@ -10,21 +10,23 @@ import org.jmate.Strings;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class BlockAffixProducer {
-    int suffixSequence;
+    int suffixSequence = 100;
     Map<String, String> suffixIdMap = Collects.newHashMap();
     Map<String, String> rootSuffixMap = Collects.newHashMap();
-    List<String> kelimeler;
-    List<String> suffixes;
+    Set<String> suffixes;
 
     Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
 
     public BlockAffixProducer(String kelimeDosyasi, String affixFile, int affixLimit) throws IOException {
-        suffixes = new StringFrequencyHelper(affixFile, affixLimit).getPairSet().getSortedList();
-        kelimeler = new SimpleFileReader(kelimeDosyasi).asStringList();
+        suffixes = Collects.newHashSet(new StringFrequencyHelper(affixFile, affixLimit).getPairSet().getSortedList());
+        for (String suffix : suffixes) {
+            suffixIdMap.put(suffix, String.valueOf(suffixSequence++));
+        }
 
-        for (String kelime : kelimeler) {
+        for (String kelime : new SimpleFileReader(kelimeDosyasi, "utf-8").getIterableReader()) {
             List<String[]> sonuclar = zemberek.kelimeAyristir(kelime);
 
             if (sonuclar.size() == 0) {
@@ -52,31 +54,72 @@ public class BlockAffixProducer {
                     addRootSuffixMap(kelime, "");
                 }
             }
-
         }
     }
 
     private void addRootSuffixMap(String root, String suffixBlock) {
-
-        if (!rootSuffixMap.containsKey(root) || !Strings.hasText(suffixBlock)) {
+        String suffixConcat = rootSuffixMap.get(root);
+        if (suffixConcat == null) {
             rootSuffixMap.put(root, suffixBlock);
-        } else {
-            String suffixConcat = rootSuffixMap.get(root);
-            List<String> split = Collects.newArrayList(suffixConcat.split(","));
-            if (!split.contains(suffixBlock)) {
-                if (Strings.hasText(suffixConcat))
-                    rootSuffixMap.put(root, suffixConcat + "," + suffixBlock);
-                else
-                    rootSuffixMap.put(root, suffixBlock);
-            }
+            return;
+        }
+        if (!Strings.hasText(suffixBlock))
+            return;
+        List<String> split = Collects.newArrayList(suffixConcat.split(","));
+        if (!split.contains(suffixBlock)) {
+            if (Strings.allHasText(suffixConcat))
+                rootSuffixMap.put(root, suffixConcat + "," + suffixBlock);
+            else
+                rootSuffixMap.put(root, suffixBlock);
         }
     }
 
 
-    private void generateDictFile(String fileName) throws IOException {
+    private void generateAffixFile(String fileName) throws IOException {
+        List<String> templateLines = new SimpleFileReader("kaynaklar/hunspell/affix-template.txt", "utf-8").asStringList();
+        SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
+        sfw.writeLines(templateLines);
+        sfw.writeLine("\n");
+        for (Map.Entry<String, String> entry : suffixIdMap.entrySet()) {
+            // SFX 0 Y 6
+            sfw.writeLine("SFX " + entry.getValue() + " N 1");
+            //
+            sfw.writeLine("SFX " + entry.getValue() + " 0 " + entry.getKey() + " .");
+            sfw.writeString("\n");
+        }
+        sfw.close();
+    }
+
+    private String generateSuffixIdStringFromSuffixNames(String concatString) {
+        if (!Strings.hasText(concatString))
+            return "";
+        String[] suffixNames = concatString.split(",");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < suffixNames.length; i++) {
+            sb.append(suffixIdMap.get(suffixNames[i]));
+            if (i < suffixNames.length - 1)
+                sb.append(",");
+        }
+        return sb.toString();
+    }
+
+    private void generateDictSuffixNameFile(String fileName) throws IOException {
         SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
         for (Map.Entry<String, String> entry : rootSuffixMap.entrySet()) {
             sfw.writeLine(entry.getKey() + "|" + entry.getValue());
+        }
+        sfw.close();
+    }
+
+    private void generateHunspellDictFile(String fileName) throws IOException {
+        SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
+        sfw.writeLine(String.valueOf(rootSuffixMap.size()));
+        for (Map.Entry<String, String> entry : rootSuffixMap.entrySet()) {
+            String suffixIds = generateSuffixIdStringFromSuffixNames(entry.getValue());
+            if (Strings.hasText(suffixIds))
+                sfw.writeLine(entry.getKey() + "/" + suffixIds);
+            else
+                sfw.writeLine(entry.getKey());
         }
         sfw.close();
     }
@@ -86,6 +129,8 @@ public class BlockAffixProducer {
                 "liste/test-kelimeler.txt",
                 "liste/test-suffix.txt",
                 10000);
-        bap.generateDictFile("liste/test-dic.txt");
+        bap.generateDictSuffixNameFile("liste/test-dic.txt");
+        bap.generateHunspellDictFile("kaynaklar/hunspell-win32/test-tr.dic");
+        bap.generateAffixFile("kaynaklar/hunspell-win32/test-tr.aff");
     }
 }
