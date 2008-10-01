@@ -20,7 +20,8 @@ public class BlockAffixProducer {
 
     Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
 
-    public BlockAffixProducer(String kelimeDosyasi, String affixFile, int affixLimit) throws IOException {
+    public BlockAffixProducer(String kelimeDosyasi, String affixFile, int affixLimit)
+            throws IOException {
         System.out.println("Loading suffixes.");
         suffixes = Collects.newHashSet(new StringFrequencyHelper(affixFile, affixLimit).getPairSet().getSortedList());
         for (String suffix : suffixes) {
@@ -87,18 +88,15 @@ public class BlockAffixProducer {
     }
 
 
-    private void generateAffixFile(String fileName) throws IOException {
+    private void generateHunspellAffixFile(String fileName) throws IOException {
         System.out.println("Generating affix file...");
         List<String> templateLines = new SimpleFileReader("kaynaklar/hunspell/affix-template.txt", "utf-8").asStringList();
         SimpleFileWriter sfw = new SimpleFileWriter.Builder(fileName).encoding("utf-8").keepOpen().build();
         sfw.writeLines(templateLines);
         sfw.writeLine("\n");
         for (Map.Entry<String, String> entry : suffixIdMap.entrySet()) {
-            // SFX 0 Y 6
             sfw.writeLine("SFX " + entry.getValue() + " N 1");
-            //
             sfw.writeLine("SFX " + entry.getValue() + " 0 " + entry.getKey() + " .");
-            sfw.writeString("\n");
         }
         sfw.close();
     }
@@ -145,6 +143,6 @@ public class BlockAffixProducer {
                 7500);
         //bap.generateDictSuffixNameFile("liste/test-dic.txt");
         bap.generateHunspellDictFile("kaynaklar/hunspell-win32/test-tr.dic");
-        bap.generateAffixFile("kaynaklar/hunspell-win32/test-tr.aff");
+        bap.generateHunspellAffixFile("kaynaklar/hunspell-win32/test-tr.aff");
     }
 }

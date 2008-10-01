@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ZemberekVersusCorpusDenetleyici {
 
-    KelimeListesi corp = new KelimeListesi("corpus/corpus.txt");
+    WordListGenerator corp = new WordListGenerator("corpus/corpus.txt");
     Zemberek zemberek = new Zemberek(new TurkiyeTurkcesi());
     int zemberekHit, zemberekMiss, corpusHit, corpusMiss;
 
