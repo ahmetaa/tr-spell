@@ -1,0 +1,4 @@
+﻿LANG tr_TR
+SET UTF-8
+TRY İiIıŞşÇçĞğÜüÖö-qwertyuopasdfghjklzxcvbnmQWERTYUOPASDFGHJKLZXCVBNM'
+FLAG num
