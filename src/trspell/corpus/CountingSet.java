@@ -7,7 +7,7 @@ import static org.jmate.Preconditions.checkNotNull;
 import java.util.*;
 
 /**
- * a simple set like data structure for counting elemaents. not thread safe.
+ * a simple set like data structure for counting elements. not thread safe.
  * Tr: amele bir sayacli kume veri yapisi. icine koyulan her elemanla birlikte o elemana iliskin bir sayaci da arttirir.
  */
 public class CountingSet<T> implements Iterable<T> {
@@ -34,7 +34,7 @@ public class CountingSet<T> implements Iterable<T> {
     }
 
     /**
-     * returns the total element count of the countinf set.
+     * returns the total element count of the counting set.
      *
      * @return element count.
      */
