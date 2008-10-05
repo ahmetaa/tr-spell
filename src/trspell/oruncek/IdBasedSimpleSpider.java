@@ -38,8 +38,7 @@ public class IdBasedSimpleSpider {
         for (int i = basla; i < end; i++) {
 
             final int id = i;
-
-            Future f = service.submit(new Runnable() {
+            service.submit(new Runnable() {
                 public void run() {
                     try {
                         String html = IOs.readAsString(IOs.getReader(new URL(baseUrl + id).openStream()));
@@ -61,8 +60,6 @@ public class IdBasedSimpleSpider {
                     }
                 }
             });
-
-            f.isDone();
 
         }
         service.shutdown();
@@ -89,7 +86,7 @@ public class IdBasedSimpleSpider {
                 "http://www.radikal.com.tr/Default.aspx?aType=HaberYazdir&ArticleID=",
                 "500 Sayfada Hata",
                 Pattern.compile("(haberDetayYazi\"\\>)(.+?)(window\\.print)", Pattern.DOTALL),
-                "arsiv/radikal",
+                "C:\\usr\\projects\\corpus\\kaynaklar\\radikal\\radikal-",
                 20);
         ids.doIt(600000, 900000, 1000);
 

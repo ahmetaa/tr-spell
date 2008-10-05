@@ -49,7 +49,8 @@ public class AffixBlockCounter {
     }
 
     public static void main(String[] args) throws IOException {
-        new AffixBlockCounter("liste/test-kelimeler.txt").createSuffixCountFile("liste/test-suffix.txt");
+        //new AffixBlockCounter("liste/test-kelimeler.txt").createSuffixCountFile("liste/test-suffix.txt");
+        new AffixBlockCounter("liste/frekans-sirali-liste.txt").createSuffixCountFile("liste/suffix.txt");
     }
 
 

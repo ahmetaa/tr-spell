@@ -4,7 +4,6 @@ import net.zemberek.erisim.Zemberek;
 import net.zemberek.islemler.cozumleme.CozumlemeSeviyesi;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
 import net.zemberek.yapi.Kelime;
-import net.zemberek.yapi.ek.Ek;
 import org.jmate.*;
 
 import java.io.File;
@@ -165,9 +164,9 @@ public class WordListGenerator {
     }
 
     public static void main(String[] args) throws IOException {
-       // new WordListGenerator("liste/kelime-frekans.txt").mergeList("liste/kelime-frekans-zaman.txt");
-       // new WordListGenerator("liste/kelime-frekans-zaman.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/zaman-utf8");
-       // new WordListGenerator("liste/kelime-frekans.txt").mergeList("C:/usr/projects/corpus/kaynaklar/utf-8");
+       //new WordListGenerator("liste/kelime-frekans.txt").mergeList("liste/kelime-frekans-radikal.txt");
+       //new WordListGenerator("liste/kelime-frekans-radikal.txt").createListFromDir("C:/usr/projects/corpus/kaynaklar/radikal-utf8");
+       //new WordListGenerator("liste/kelime-frekans.txt").mergeList("C:/usr/projects/corpus/kaynaklar/utf-8");
        new WordListGenerator("liste/kelime-frekans.txt").generateFrequencyOrderedWordFile("liste/frekans-sirali-liste.txt");
     }
 }

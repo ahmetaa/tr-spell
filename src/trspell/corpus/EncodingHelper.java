@@ -61,7 +61,7 @@ public class EncodingHelper {
 /*        convertTurkishUtf8(new File("corpus/kaynaklar/test/tolstoy_dirilis.txt"),
                 new File("corpus/kaynaklar/test/tolstoy-dirilis-utf8.txt")
         );*/
-        converDir("C://usr/projects/corpus/kaynaklar/test", "C://usr/projects/corpus/kaynaklar/test-utf8");
+        converDir("C://usr/projects/corpus/kaynaklar/radikal", "C://usr/projects/corpus/kaynaklar/radikal-utf8");
     }
 
 }
