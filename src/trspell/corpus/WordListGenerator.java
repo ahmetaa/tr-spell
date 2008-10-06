@@ -126,13 +126,6 @@ public class WordListGenerator {
         new SimpleFileWriter(filename, "utf-8").writeToStringLines(kelimeFrekansKumesi.getSortedList());
     }
 
-    public void generateDicFile(String filename) throws IOException {
-        List<String> list = Collects.newArrayList(String.valueOf(kelimeFrekansKumesi.size()));
-        list.addAll(kelimeFrekansKumesi.getSet());
-        Collections.sort(list, new TurkceSiralamaKiyaslayici());
-        new SimpleFileWriter.Builder(filename).encoding("utf-8").build().writeToStringLines(list);
-    }
-
     private void kaydet() throws IOException {
         List<CountingSet.Pair<String>> kelimeFreq = kelimeFrekansKumesi.getSortedPairList();
 
