@@ -4,7 +4,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>tr@dictionaries.addons.mozilla.org</em:id>
-    <em:version>0.2.3</em:version>
+    <em:version>0.3.1</em:version>
     <em:targetApplication>
 	    <!-- Firefox -->
 	    <Description>

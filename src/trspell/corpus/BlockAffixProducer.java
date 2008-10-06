@@ -49,8 +49,10 @@ public class BlockAffixProducer {
                     }
                     String ekBlogu = sb.toString();
                     String kokAdayi = kelime.substring(0, kelime.length() - ekBlogu.length());
-                    if (kokAdayi.endsWith("'"))
+                    if (kokAdayi.endsWith("'")) {
                         ekBlogu = "'" + ekBlogu;
+                        kokAdayi = kokAdayi.substring(0, kokAdayi.length() - 1);
+                    }
 
                     if (!suffixes.contains(ekBlogu)) {
                         addRootSuffixMap(kelime, "");
@@ -142,9 +144,9 @@ public class BlockAffixProducer {
         BlockAffixProducer bap = new BlockAffixProducer(
                 "liste/frekans-sirali-liste.txt",
                 "liste/suffix.txt",
-                10000);
+                7500);
         //bap.generateDictSuffixNameFile("liste/test-dic.txt");
-        bap.generateHunspellDictFile("kaynaklar/hunspell-win32/test-tr.dic");
-        bap.generateHunspellAffixFile("kaynaklar/hunspell-win32/test-tr.aff");
+        bap.generateHunspellDictFile("liste/tr.dic");
+        bap.generateHunspellAffixFile("liste/tr.aff");
     }
 }
