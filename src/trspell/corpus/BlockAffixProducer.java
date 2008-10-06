@@ -49,6 +49,8 @@ public class BlockAffixProducer {
                     }
                     String ekBlogu = sb.toString();
                     String kokAdayi = kelime.substring(0, kelime.length() - ekBlogu.length());
+                    if (kokAdayi.endsWith("'"))
+                        ekBlogu = "'" + ekBlogu;
 
                     if (!suffixes.contains(ekBlogu)) {
                         addRootSuffixMap(kelime, "");

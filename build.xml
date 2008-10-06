@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="tr-spell" default="firefox" basedir=".">
+
+    <property name="ad-surum" value="tr-spell-0.1"/>
+    <property name="output.dir" value="liste"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="resource.dir" value="kaynaklar"/>
+    <property name="firefox.dist" value="${dist.dir}/firefox"/>
+    <property name="firefox.res" value="${resource.dir}/firefox"/>
+    <property name="firefox.dic" value="${firefox.dist}/dictionaries"/>
+
+    <!-- derleme icin gerekli kutuphanelerin dizinini belirt.-->
+    <path id="classpath.build">
+        <fileset dir="lib"/>
+    </path>
+
+    <target name="temizle">
+        <delete dir="build"/>
+        <delete dir="dagitim"/>
+        <delete file="${ad-surum}.jar"/>
+    </target>
+
+    <!--  uygulamayi derler. -->
+    <target name="derle">
+        <!-- derlemenin yapilacasi dizini silip bastan olustur.-->
+        <delete dir="build"/>
+        <mkdir dir="build"/>
+        <!-- /src altindaki dosyalari derle ve sonucunu build dizinine aktar -->
+        <javac srcdir="src"
+               classpathref="classpath.build"
+               destdir="build"
+               debug="true"
+               source="1.5"
+               target="1.5">
+        </javac>
+        <!-- java dosyasi haricinde dosyalar varsa onlari da build dizinine aktar.-->
+        <copy todir="build">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- derleme sonucunda olusan class dosyalarini paketleyip jar dosyasina donusturur -->
+    <target name="jar" depends="derle">
+        <jar jarfile="${ad-surum}.jar"
+             basedir="build">
+        </jar>
+    </target>
+
+    <!-- dagitim dizininde dagitim olusturur -->
+    <target name="dagitim" depends="temizle, jar">
+
+        <delete dir="dagitim"/>
+        <mkdir dir="dagitim"/>
+
+        <copy todir="dagitim">
+            <fileset dir="lib-dagitim"/>
+            <fileset file="${ad-surum}.jar"/>
+            <fileset file="run.sh"/>
+            <fileset file="run.bat"/>
+        </copy>
+        <!-- bilgi dizinini kopyala -->
+        <mkdir dir="dagitim/bilgi"/>
+        <copy todir="dagitim/bilgi">
+            <fileset dir="bilgi"/>
+        </copy>
+        <!-- unix-linux ozel-->
+        <chmod dir="dagitim" perm="777"/>
+        <chmod file="dagitim/start.sh" perm="ugo+rx"/>
+
+        <zip basedir="dagitim" file="dagitim/${ad-surum}.zip"/>
+
+    </target>
+
+    <target name="firefox">
+        <mkdir dir="${firefox.dist}"/>
+        <mkdir dir="${firefox.dic}"/>
+        <copy todir="${firefox.dist}">
+           <fileset dir="${firefox.res}"/>
+        </copy>
+        <copy todir="${firefox.dic}">
+           <fileset dir="${output.dir}">
+               <include name="tr.aff"/>
+               <include name="tr.dic"/>
+           </fileset>
+        </copy>
+
+        <zip basedir="${firefox.dist}"
+             file="firefox-turkish-dictionary.xpi"
+             level="8"/>
+    </target>
+
+
+</project>

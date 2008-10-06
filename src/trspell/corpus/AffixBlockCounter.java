@@ -30,7 +30,12 @@ public class AffixBlockCounter {
                     for (int i = 1; i < sonuc.length; i++) {
                         sb.append(sonuc[i]);
                     }
-                    ekListesi.add(sb.toString());
+                    String ekBlogu = sb.toString();
+                    String kokAdayi = s.substring(0, s.length() - ekBlogu.length());
+                    // ozel adlar icin ek kod
+                    if (kokAdayi.endsWith("'"))
+                        ekBlogu = "'" + ekBlogu;
+                    ekListesi.add(ekBlogu);
                 }
             }
         }
