@@ -144,7 +144,7 @@ public class BlockAffixProducer {
         BlockAffixProducer bap = new BlockAffixProducer(
                 "liste/frekans-sirali-liste.txt",
                 "liste/suffix.txt",
-                7500);
+                20000);
         //bap.generateDictSuffixNameFile("liste/test-dic.txt");
         bap.generateHunspellDictFile("liste/tr.dic");
         bap.generateHunspellAffixFile("liste/tr.aff");
