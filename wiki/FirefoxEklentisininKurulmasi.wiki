@@ -1,0 +1,13 @@
+#Firefox eklentisinin kurulmasi
+
+= Giris =
+
+Bu dokumanda Firefox Turkce imla denetim eklentisinin kurulmasi anlatilacaktir
+
+
+= Detaylar =
+
+*Proje ana sayfasindaki .xpi uzantili dosyayi indirin.
+*Firefox'u acin. Dosya->Dosya Ac ya da File->Open File secenegini secin. 
+*Indirdiginiz dosyati secin. Otomatik olarak firefox eklentisinin yuklenmesi gerekir.
+*Firefox'u tekrar baslatin. 
