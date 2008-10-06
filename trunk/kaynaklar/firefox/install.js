@@ -1,4 +1,4 @@
-﻿var err = initInstall("Basic Turkish Dictionary", "tr@dictionaries.addons.mozilla.org", "0.1");
+﻿var err = initInstall("Basic Turkish Dictionary", "tr@dictionaries.addons.mozilla.org", "0.3");
 if (err != SUCCESS)
     cancelInstall();
 
