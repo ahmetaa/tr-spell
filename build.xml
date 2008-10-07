@@ -7,6 +7,7 @@
     <property name="dist.dir" value="dist"/>
     <property name="resource.dir" value="kaynaklar"/>
     <property name="firefox.dist" value="${dist.dir}/firefox"/>
+	<property name="hunspell.dist" value="${dist.dir}/hunspell"/>
     <property name="firefox.res" value="${resource.dir}/firefox"/>
     <property name="firefox.dic" value="${firefox.dist}/dictionaries"/>
 
@@ -73,8 +74,12 @@
         <zip basedir="dagitim" file="dagitim/${ad-surum}.zip"/>
 
     </target>
+	
+	<target name="generate">
+	<!-- TODO: tr.{aff,dic} dosyalarının oluşturulması buraya konulacak --> 
+	</target>
 
-    <target name="firefox">
+    <target name="firefox" depends="generate">
         <mkdir dir="${firefox.dist}"/>
         <mkdir dir="${firefox.dic}"/>
         <copy todir="${firefox.dist}">
@@ -91,6 +96,23 @@
              file="firefox-tr-dict-v0.3.1.xpi"
              level="8"/>
     </target>
+	
+	<target name="hunspell" depends="generate">
+		<delete dir="${hunspell.dist}"/>
+		<mkdir dir="${hunspell.dist}"/>
+		<zip destfile="${hunspell.dist}/tr_TR.zip">
+			<zipfileset dir="${output.dir}">
+				<include name="tr.aff"/>
+				<include name="tr.dic"/>
+				<include name="${resource.dir}/hunspell/README"/>
+				<include name="${resource.dir}/hunspell/dictionary.lst"/>
+			</zipfileset>
+			<zipfileset dir="${resource.dir}/hunspell">
+				<include name="README"/>
+				<include name="dictionary.lst"/>
+			</zipfileset>
+		</zip>
+	</target>
 
 
 </project>
